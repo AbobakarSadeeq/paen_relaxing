@@ -1,1 +1,67 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===========================
+   🌎 Global CSS Reset
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===========================
+   🧩 Basic Body Styles
+   =========================== */
+html,
+body {
+  height: 100%;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: rgb(27, 27, 27);
+  color: white;
+  line-height: 1.5;
+}
+
+/* ===========================
+   🔗 Links
+   =========================== */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===========================
+   🖋 Headings
+   =========================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* ===========================
+   📦 Images
+   =========================== */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===========================
+   🧍 Lists
+   =========================== */
+ul,
+ol {
+  list-style: none;
+}
+
+/* ===========================
+   🧾 Buttons
+   =========================== */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
