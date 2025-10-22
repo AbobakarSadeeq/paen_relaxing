@@ -8,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class Home {
 
+  playSoundBtn = false;
+
+  playSound() {
+    console.log("asdfg");
+    this.playSoundBtn = true;
+  }
+
+  stopSound():void {
+    console.log("zxcv");
+    this.playSoundBtn = false;
+
+
+  }
 }

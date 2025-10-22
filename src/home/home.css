@@ -1,0 +1,49 @@
+.container {
+  margin: 1em 3em;
+  background-color: green;
+  height: fit-content;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.single-relaxing-box {
+  background-color: brown;
+  min-height: 30em;
+  min-width: 17em;
+  max-width: 100em;
+  border-right: gray solid 2px;
+  border-bottom: grey solid 2px;
+}
+
+.single-relaxing-box-content {
+  background-color: blue;
+  height: 95%;
+  margin: 0.5em;
+}
+
+.play-button-container {
+  background-color: pink;
+  height: 90%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pause-button-container {
+  background-color: pink;
+  height: 90%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sound-volumn-slider-container {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+}
