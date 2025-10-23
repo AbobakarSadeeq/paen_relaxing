@@ -1,6 +1,6 @@
 .container {
   margin: 1em 3em;
-  background-color: green;
+  /* background-color: green; */
   height: fit-content;
 }
 
@@ -10,7 +10,7 @@
 }
 
 .single-relaxing-box {
-  background-color: brown;
+  /* background-color: brown; */
   min-height: 30em;
   min-width: 17em;
   max-width: 100em;
@@ -19,14 +19,25 @@
 }
 
 .single-relaxing-box-content {
-  background-color: blue;
+  /* background-color: blue; */
   height: 95%;
   margin: 0.5em;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  opacity: 1;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.single-relaxing-box-content:hover {
+  opacity: 0.8;
 }
 
 .play-button-container {
-  background-color: pink;
-  height: 90%;
+  height: 100%;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -34,8 +45,7 @@
 }
 
 .pause-button-container {
-  background-color: pink;
-  height: 90%;
+  height: 100%;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -43,7 +53,46 @@
 }
 
 .sound-volumn-slider-container {
-  height: 10%;
+  position: absolute;
+  bottom: 1em;
+  left: 3em;
+}
+
+.single-relaxing-box-add {
+  /* background-color: brown; */
+  min-height: 30em;
+  min-width: 17em;
+  max-width: 100em;
+  border-right: gray solid 2px;
+  border-bottom: grey solid 2px;
+}
+
+.single-relaxing-box-add-content {
+  /* background-color: blue; */
+  cursor: pointer;
+  height: 96%;
+  margin-top: .42em;
+  margin-left: .19em;
+  margin-right: .19em;
+  border: solid 2px grey;
+  border-radius: 5%;
+  opacity: 1;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.single-relaxing-box-add-content:hover {
+  background-color: rgb(60, 58, 58); /* 👈 light grey color */
+  opacity: 0.9; /* optional subtle fade effect */
+}
+
+.add-relaxing-sound-container {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.add-relaxing-sound-container img {
+  filter: brightness(0) invert(1);
 }
