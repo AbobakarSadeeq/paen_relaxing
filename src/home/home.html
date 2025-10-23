@@ -1,10 +1,6 @@
-<div class="container">
+<div class="home-container">
 
-  <div class="row">
-
-
-
-   
+  <div class="home-row">
 
     <div class="single-relaxing-box">
       <div class="single-relaxing-box-content" [style.--bg-image]="'url(' + backgroundImage + ')'">
@@ -52,10 +48,33 @@
 
     <div class="single-relaxing-box-add">
       <div class="single-relaxing-box-add-content">
-        <div class="add-relaxing-sound-container" (click)="addRelaxingSound()">
+        <div class="add-relaxing-sound-container" (click)="openAddRelaxingSoundModel()">
           <img src="plus.png" alt="" width="50" height="50">
         </div>
       </div>
     </div>
 
   </div>
+
+
+  <!-- Add-Relaxing-Sound-Modal -->
+
+  <div class="modal fade bd-example-modal-lg" #AddRelaxingSoundModal data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content add-relaxing-model-content">
+        <div class="modal-header" style="border-bottom: none !important;">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Relaxing Sound <i class="bi bi-stars"></i></h1>
+        </div>
+        <div class="modal-body">
+
+          <div class="relaxing-sound-selection-container-section">
+
+            <div class="relaxing-sound-section">
+
+            </div>
+
+
+          </div>
+
+        </div>
+      </div>

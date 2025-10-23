@@ -12,11 +12,11 @@
    =========================== */
 html,
 body {
-  height: 100%;
-  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: rgb(27, 27, 27);
-  color: white;
-  line-height: 1.5;
+  height: 100% !important;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  background-color: rgb(27, 27, 27) !important;
+  color: white !important;
+  line-height: 1.5 !important;
 }
 
 /* ===========================

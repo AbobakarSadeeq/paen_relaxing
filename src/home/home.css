@@ -1,10 +1,10 @@
-.container {
+.home-container {
   margin: 1em 3em;
   /* background-color: green; */
   height: fit-content;
 }
 
-.row {
+.home-row {
   display: flex;
   flex-wrap: wrap;
 }
@@ -95,4 +95,25 @@
 
 .add-relaxing-sound-container img {
   filter: brightness(0) invert(1);
+}
+
+
+/* Add-relaxing sound model */
+
+.add-relaxing-model-content {
+  background-color: #17131a;
+  color: white;
+  border: none;
+}
+
+.modal-title {
+  font-weight: 900;
+}
+
+
+.modal-body {
+}
+
+.relaxing-sound-section {
+
 }
