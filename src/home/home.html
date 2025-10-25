@@ -1,17 +1,18 @@
+<!-- Home page all content -->
 <div class="home-container">
 
   <div class="home-row">
 
     <div class="single-relaxing-box">
-      <div class="single-relaxing-box-content" [style.--bg-image]="'url(' + backgroundImage + ')'">
+      <div class="single-relaxing-box-content" [style.--bg-image]="'url(' + backgroundImage[0] + ')'">
 
         @if (playSoundBtn == false) {
         <div class="play-button-container" (click)="playSound()">
-          <img src="play-button.png" width="50" height="50">
+          <img src="/icons/play-button.png" width="50" height="50">
         </div>
         } @else {
         <div class="pause-button-container" (click)="stopSound()">
-          <img src="pause.png" width="50" height="50">
+          <img src="/icons/pause.png" width="50" height="50">
         </div>
         }
 
@@ -25,15 +26,15 @@
     </div>
 
     <div class="single-relaxing-box">
-      <div class="single-relaxing-box-content" [style.--bg-image]="'url(' + backgroundImage + ')'">
+      <div class="single-relaxing-box-content" [style.--bg-image]="'url(' + backgroundImage[1] + ')'">
 
         @if (playSoundBtn == false) {
         <div class="play-button-container" (click)="playSound()">
-          <img src="play-button.png" width="50" height="50">
+          <img src="/icons/play-button.png" width="50" height="50">
         </div>
         } @else {
         <div class="pause-button-container" (click)="stopSound()">
-          <img src="pause.png" width="50" height="50">
+          <img src="/icons/pause.png" width="50" height="50">
         </div>
         }
 
@@ -49,32 +50,72 @@
     <div class="single-relaxing-box-add">
       <div class="single-relaxing-box-add-content">
         <div class="add-relaxing-sound-container" (click)="openAddRelaxingSoundModel()">
-          <img src="plus.png" alt="" width="50" height="50">
+          <img src="/icons/plus.png" alt="" width="50" height="50">
         </div>
       </div>
     </div>
 
   </div>
+</div>
 
 
-  <!-- Add-Relaxing-Sound-Modal -->
+<!-- Add-Relaxing-Sound-Modal -->
 
-  <div class="modal fade bd-example-modal-lg" #AddRelaxingSoundModal data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content add-relaxing-model-content">
-        <div class="modal-header" style="border-bottom: none !important;">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Relaxing Sound <i class="bi bi-stars"></i></h1>
-        </div>
-        <div class="modal-body">
+<div class="modal fade bd-example-modal-lg" #AddRelaxingSoundModal data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content add-relaxing-model-content">
+      <div class="modal-header" style="border-bottom: none !important;">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Relaxing Sound <i class="bi bi-stars"></i></h1>
+      </div>
 
-          <div class="relaxing-sound-selection-container-section">
+      <div class="modal-body">
 
-            <div class="relaxing-sound-section">
 
+        <!-- one category have multiple sounds so there should be object inside array and then inside it have img,name,id,location etc. -->
+
+        <div class="rain-category-all-sound-container">
+          <h5 class="category-title">Rain Sounds</h5>
+          <hr>
+
+          <div class="category-row">
+
+            <div class="relaxing-sound-img-container" [class.add-selected]="isAddRelaxingSoundSelected" (click)="abc()">
+              <h5 class="relaxing-sound-title">Simple Rain</h5>
+              @if(isAddRelaxingSoundSelected)
+              {
+              <i class="bi bi-check-circle-fill selected-relaxing-sound-icon"></i>
+              }
+              <img src="/Relaxing-Sounds-images/Rain/rain-img.jpg" alt="Umbrella Rain">
+            </div>
+
+            <div class="relaxing-sound-img-container" [class.add-selected]="isAddRelaxingSoundSelected" (click)="abc()">
+              <h5 class="relaxing-sound-title">Thunderstorm Rain</h5>
+              @if(isAddRelaxingSoundSelected)
+              {
+              <i class="bi bi-check-circle-fill selected-relaxing-sound-icon"></i>
+              }
+              <img src="/Relaxing-Sounds-images/Rain/thunderstorm-rain.jpg" alt="Umbrella Rain">
             </div>
 
 
-          </div>
 
+          </div>
         </div>
+
+
+
+
+
+
       </div>
+
+
+      <div class="modal-footer" style="border-top: none !important;">
+        <button type="button" class="btn btn-outline-secondary py-1 px-2"
+          (click)="onCloseRelaxingSoundModel()">Close</button>
+        <button type="button" class="btn btn-success py-1 px-2" (click)="onAddRelaxingSound()">Add Relaxing
+          sound</button>
+      </div>
+    </div>
+  </div>
+</div>

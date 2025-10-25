@@ -55,7 +55,7 @@
 .sound-volumn-slider-container {
   position: absolute;
   bottom: 1em;
-  left: 3em;
+  left: 2em;
 }
 
 .single-relaxing-box-add {
@@ -71,9 +71,9 @@
   /* background-color: blue; */
   cursor: pointer;
   height: 96%;
-  margin-top: .42em;
-  margin-left: .19em;
-  margin-right: .19em;
+  margin-top: 0.42em;
+  margin-left: 0.19em;
+  margin-right: 0.19em;
   border: solid 2px grey;
   border-radius: 5%;
   opacity: 1;
@@ -97,8 +97,7 @@
   filter: brightness(0) invert(1);
 }
 
-
-/* Add-relaxing sound model */
+/****************************************************** Add-relaxing sound model ******************************************************/
 
 .add-relaxing-model-content {
   background-color: #17131a;
@@ -110,10 +109,48 @@
   font-weight: 900;
 }
 
-
-.modal-body {
+.category-title {
+  font-weight: 700;
 }
 
-.relaxing-sound-section {
+.rain-category-all-sound-container {
+}
 
+.category-row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.relaxing-sound-img-container {
+  /* background-color: red; */
+  min-width: 30%;
+  max-width: 20%;
+  max-height: 60px;
+  cursor: pointer;
+  position: relative;
+}
+
+.add-selected {
+  border: solid 3px rgb(17, 170, 205);
+}
+
+.relaxing-sound-title {
+  position: absolute;
+  padding: 0.6em 0em 1em 0.6em;
+  font-weight: 600;
+}
+
+.selected-relaxing-sound-icon {
+  position: absolute;
+  right: 0.5em;
+  top: 0.8em;
+}
+
+.relaxing-sound-img-container img {
+  width: 100%;
+  max-height: 50px;
+  object-fit: cover;
+  object-position: center;
 }

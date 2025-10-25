@@ -12,7 +12,7 @@ declare var bootstrap: any;
 export class Home {
 
   playSoundBtn = false;
-  backgroundImage: string = 'rain-img.jpg';
+  backgroundImage: string[] = ['/Relaxing-Sounds-images/Rain/rain-img.jpg', '/Relaxing-Sounds-images/Rain/thunderstorm-rain.jpg'];
 
   ngOnInit(): void {
 
@@ -36,6 +36,7 @@ export class Home {
 
   @ViewChild('AddRelaxingSoundModal') AddRelaxingSoundModalRef!: ElementRef;
   private _bootstrapModalInstance: any;
+  isAddRelaxingSoundSelected = false;
 
   ngAfterViewInit(): void {
     this._bootstrapModalInstance = new bootstrap.Modal(this.AddRelaxingSoundModalRef.nativeElement);
@@ -55,6 +56,11 @@ export class Home {
   onAddRelaxingSound(): void {
     console.log("on add relaxing sound done!");
     this._bootstrapModalInstance.hide();
-
   }
+
+  abc(): void {
+    console.log("forst");
+    this.isAddRelaxingSoundSelected = !this.isAddRelaxingSoundSelected;
+  }
+
 }
