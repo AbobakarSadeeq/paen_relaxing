@@ -73,38 +73,32 @@
 
         <!-- one category have multiple sounds so there should be object inside array and then inside it have img,name,id,location etc. -->
 
-        <div class="rain-category-all-sound-container">
-          <h5 class="category-title">Rain Sounds</h5>
+        @for(singleCategory of categoriesWithItsRelaxingSounds; track singleCategory['categoryId']; let
+        relaxingCategoryIndex = $index)
+        {
+        <div class="category-all-sound-container">
+          <h5 class="category-title">{{singleCategory['categoryName']}}</h5>
           <hr>
 
           <div class="category-row">
-
-            <div class="relaxing-sound-img-container" [class.add-selected]="isAddRelaxingSoundSelected" (click)="abc()">
-              <h5 class="relaxing-sound-title">Simple Rain</h5>
-              @if(isAddRelaxingSoundSelected)
+            @for(singleRelaxingSound of singleCategory['relaxingSounds']; track singleRelaxingSound['soundId']; let
+            relaxingSoundIndex = $index)
+            {
+            <div class="relaxing-sound-img-container"
+              [class.add-selected]="addOnSelectedRelaxingSoundId !== 0 && singleRelaxingSound['soundId'] === addOnSelectedRelaxingSoundId"
+              (click)="selectingRelaxingSoundOnSelectionModel(singleRelaxingSound['soundId'], relaxingCategoryIndex, relaxingSoundIndex)">
+              <h5 class="relaxing-sound-title">{{singleRelaxingSound['name']}}</h5>
+              @if(addOnSelectedRelaxingSoundId !== 0 && singleRelaxingSound['soundId'] === addOnSelectedRelaxingSoundId)
               {
               <i class="bi bi-check-circle-fill selected-relaxing-sound-icon"></i>
               }
-              <img src="/Relaxing-Sounds-images/Rain/rain-img.jpg" alt="Umbrella Rain">
+              <img [src]="singleRelaxingSound['soundImageLocation']">
             </div>
-
-            <div class="relaxing-sound-img-container" [class.add-selected]="isAddRelaxingSoundSelected" (click)="abc()">
-              <h5 class="relaxing-sound-title">Thunderstorm Rain</h5>
-              @if(isAddRelaxingSoundSelected)
-              {
-              <i class="bi bi-check-circle-fill selected-relaxing-sound-icon"></i>
-              }
-              <img src="/Relaxing-Sounds-images/Rain/thunderstorm-rain.jpg" alt="Umbrella Rain">
-            </div>
-
-
-
+            }
           </div>
+
         </div>
-
-
-
-
+        }
 
 
       </div>
