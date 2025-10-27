@@ -6,7 +6,8 @@
     {
     <div class="single-relaxing-box">
       <div class="single-relaxing-box-content" [style.--bg-image]="'url(' + singleSound['soundImage'] + ')'">
-        <span class="delete-relaxing-sound-btn" (click)="removeSound(index, singleSound['categoryId'], singleSound['soundId'])">&times;</span>
+        <span class="delete-relaxing-sound-btn"
+          (click)="removeSound(index, singleSound['categoryId'], singleSound['soundId'])">&times;</span>
 
         @if (singleSound['playPauseSoundState'] == false) {
         <div class="play-button-container" (click)="playSound(index)">
@@ -66,13 +67,15 @@
             {
             <div class="relaxing-sound-img-container"
               [class.add-selected]="addOnSelectedRelaxingSoundId !== 0 && singleRelaxingSound['soundId'] === addOnSelectedRelaxingSoundId"
+              [id]="singleRelaxingSound['isAlreadySelected'] ? 'already-selected' : null"
               (click)="selectingRelaxingSoundOnSelectionModel(singleCategory['categoryId'], singleRelaxingSound['soundId'], relaxingCategoryIndex, relaxingSoundIndex)">
-              <h5 class="relaxing-sound-title">{{singleRelaxingSound['name']}}</h5>
+              <h5 class="relaxing-sound-title">{{singleRelaxingSound['isAlreadySelected'] ? 'Already Used' :
+                singleRelaxingSound['name']}}</h5>
               @if(addOnSelectedRelaxingSoundId !== 0 && singleRelaxingSound['soundId'] === addOnSelectedRelaxingSoundId)
               {
               <i class="bi bi-check-circle-fill selected-relaxing-sound-icon"></i>
               }
-              <img [src]="singleRelaxingSound['soundImageLocation']">
+              <img [src]="singleRelaxingSound['soundImageLocation']" [id]="singleRelaxingSound['isAlreadySelected'] ? 'already-selected-img' : null">
             </div>
             }
           </div>

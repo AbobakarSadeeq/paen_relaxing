@@ -36,12 +36,17 @@ export class Home {
         const selectedCategorySoundIdIndex = selectedCategoryAllSounds.findIndex(singleSound => singleSound['soundId'] == singleCategoryIdAndSoundId['soundId']);
         const categoryId = this.categoriesWithItsRelaxingSounds[categoryIdIndex]['categoryId'];
         const soundId = this.categoriesWithItsRelaxingSounds[categoryIdIndex]['relaxingSounds'][selectedCategorySoundIdIndex]['soundId'];
+
+
         // below condition check is it sound already found on home page or not if not then do not push it again to the list and just skip it
         if (this.choosedRelaxingSounds.findIndex(singleSound => singleSound['categoryId'] == categoryId &&
           singleSound['soundId'] == soundId) == -1) {
           const audio = new Audio(this.categoriesWithItsRelaxingSounds[categoryIdIndex]['relaxingSounds'][selectedCategorySoundIdIndex]['soundAudioLocation']);
           audio.loop = true;
           audio.volume = 0.5;
+
+          // add to that sound whose already selected or already in selected home for to not select it again.
+          this.categoriesWithItsRelaxingSounds[categoryIdIndex].relaxingSounds[selectedCategorySoundIdIndex].isAlreadySelected = true;
 
           this.choosedRelaxingSounds.push({
             categoryId: this.categoriesWithItsRelaxingSounds[categoryIdIndex]['categoryId'],
@@ -55,6 +60,7 @@ export class Home {
         }
 
       }
+      console.log(this.categoriesWithItsRelaxingSounds);
     }
   }
 
@@ -79,10 +85,29 @@ export class Home {
     console.log('remove sound');
     this.choosedRelaxingSounds[index]['eachSoundAudioObj'].pause();
     this.choosedRelaxingSounds.splice(index, 1);
+
+    this.enableSelectSoundOnSoundModelSelection(categoryId, soundId); // whenever sound is remove from home then on add up sound model we can now re-add it to home page.
+
     const savedSoundIdList = [...JSON.parse(localStorage.getItem('RelaxingSounds')!)];
     const removeMatchingIdIndexFound = savedSoundIdList.findIndex(singleSound => singleSound['categoryId'] == categoryId && singleSound['soundId'] == soundId);
     savedSoundIdList.splice(removeMatchingIdIndexFound, 1);
     localStorage.setItem('RelaxingSounds', JSON.stringify(savedSoundIdList));
+  }
+
+  enableSelectSoundOnSoundModelSelection(categoryId: number, soundId: number): void {
+    const category = this.categoriesWithItsRelaxingSounds.find(
+      singleCategory => singleCategory['categoryId'] === categoryId
+    );
+
+    if (category) {
+      const sound = category.relaxingSounds.find(
+        (singleSound: any) => singleSound.soundId === soundId
+      );
+
+      if (sound) {
+        sound.isAlreadySelected = false;
+      }
+    }
   }
 
   // ********************** Add relaxing model sound section **********************
@@ -112,26 +137,29 @@ export class Home {
 
   onAddRelaxingSound(): void {
     this._bootstrapModalInstance.hide();
-    this.addOnSelectedRelaxingSoundId = 0;
-    this.selectedRelaxingSoundAudioObjInSelections?.pause();
-    if (localStorage.getItem("RelaxingSounds")) {
-      const categoryIdAndSoundIdList = [...JSON.parse(localStorage.getItem("RelaxingSounds")!)];
-      const index = categoryIdAndSoundIdList.findIndex(singleRelaxingSound => singleRelaxingSound['categoryId'] == this.selectedRelaxingSoundIdAndCategoryId.categoryId && singleRelaxingSound['soundId'] == this.selectedRelaxingSoundIdAndCategoryId.soundId);
-      if (index > -1)
-        categoryIdAndSoundIdList.splice(index, 1);
-      else
+    if (this.addOnSelectedRelaxingSoundId > 0) {
+      this.addOnSelectedRelaxingSoundId = 0;
+      this.selectedRelaxingSoundAudioObjInSelections?.pause();
+
+      if (localStorage.getItem("RelaxingSounds")) {
+        const categoryIdAndSoundIdList = [...JSON.parse(localStorage.getItem("RelaxingSounds")!)];
+        const index = categoryIdAndSoundIdList.findIndex(singleRelaxingSound => singleRelaxingSound['categoryId'] == this.selectedRelaxingSoundIdAndCategoryId.categoryId && singleRelaxingSound['soundId'] == this.selectedRelaxingSoundIdAndCategoryId.soundId);
+        if (index > -1)
+          categoryIdAndSoundIdList.splice(index, 1);
+        else
+          categoryIdAndSoundIdList.push(this.selectedRelaxingSoundIdAndCategoryId);
+
+        localStorage.setItem('RelaxingSounds', JSON.stringify(categoryIdAndSoundIdList));
+
+
+      } else {
+        const categoryIdAndSoundIdList = [];
         categoryIdAndSoundIdList.push(this.selectedRelaxingSoundIdAndCategoryId);
+        localStorage.setItem('RelaxingSounds', JSON.stringify(categoryIdAndSoundIdList));
+      }
 
-      localStorage.setItem('RelaxingSounds', JSON.stringify(categoryIdAndSoundIdList));
-
-
-    } else {
-      const categoryIdAndSoundIdList = [];
-      categoryIdAndSoundIdList.push(this.selectedRelaxingSoundIdAndCategoryId);
-      localStorage.setItem('RelaxingSounds', JSON.stringify(categoryIdAndSoundIdList));
+      this.getChoosedRelaxingAudioFromLocalStorage();
     }
-
-    this.getChoosedRelaxingAudioFromLocalStorage();
   }
 
   selectingRelaxingSoundOnSelectionModel(selectedCategoryId: number, selectedRelaxingSoundId: number, selectedCategoryIndex: number, selectedRelaxingSoundIndex: number): void {

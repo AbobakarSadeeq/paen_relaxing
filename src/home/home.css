@@ -151,6 +151,19 @@
   border: solid 3px rgb(17, 170, 205);
 }
 
+#already-selected {
+  pointer-events: none;
+  background-color: grey;
+  max-height: 50px;
+}
+
+#already-selected-img {
+  filter: grayscale(100%);
+  mix-blend-mode: overlay;
+  opacity: 0.8;
+  max-height: 50px;
+}
+
 .relaxing-sound-title {
   position: absolute;
   padding: 0.6em 0em 1em 0.6em;
