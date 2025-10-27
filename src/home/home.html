@@ -2,50 +2,30 @@
 <div class="home-container">
 
   <div class="home-row">
-
+    @for(singleSound of choosedRelaxingSounds; track $index; let index = $index)
+    {
     <div class="single-relaxing-box">
-      <div class="single-relaxing-box-content" [style.--bg-image]="'url(' + backgroundImage[0] + ')'">
+      <div class="single-relaxing-box-content" [style.--bg-image]="'url(' + singleSound['soundImage'] + ')'">
+        <span class="delete-relaxing-sound-btn" (click)="removeSound(index, singleSound['categoryId'], singleSound['soundId'])">&times;</span>
 
-        @if (playSoundBtn == false) {
-        <div class="play-button-container" (click)="playSound()">
+        @if (singleSound['playPauseSoundState'] == false) {
+        <div class="play-button-container" (click)="playSound(index)">
           <img src="/icons/play-button.png" width="50" height="50">
         </div>
         } @else {
-        <div class="pause-button-container" (click)="stopSound()">
+        <div class="pause-button-container" (click)="stopSound(index)">
           <img src="/icons/pause.png" width="50" height="50">
         </div>
         }
 
-
         <div class="sound-volumn-slider-container">
-
-          <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+          <input type="range" min="0" max="100" value="50" class="slider" id="myRange"
+            (input)="changeSoundVolume(index, $event)">
         </div>
 
       </div>
     </div>
-
-    <div class="single-relaxing-box">
-      <div class="single-relaxing-box-content" [style.--bg-image]="'url(' + backgroundImage[1] + ')'">
-
-        @if (playSoundBtn == false) {
-        <div class="play-button-container" (click)="playSound()">
-          <img src="/icons/play-button.png" width="50" height="50">
-        </div>
-        } @else {
-        <div class="pause-button-container" (click)="stopSound()">
-          <img src="/icons/pause.png" width="50" height="50">
-        </div>
-        }
-
-
-        <div class="sound-volumn-slider-container">
-
-          <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-        </div>
-
-      </div>
-    </div>
+    }
 
     <div class="single-relaxing-box-add">
       <div class="single-relaxing-box-add-content">
@@ -86,7 +66,7 @@
             {
             <div class="relaxing-sound-img-container"
               [class.add-selected]="addOnSelectedRelaxingSoundId !== 0 && singleRelaxingSound['soundId'] === addOnSelectedRelaxingSoundId"
-              (click)="selectingRelaxingSoundOnSelectionModel(singleRelaxingSound['soundId'], relaxingCategoryIndex, relaxingSoundIndex)">
+              (click)="selectingRelaxingSoundOnSelectionModel(singleCategory['categoryId'], singleRelaxingSound['soundId'], relaxingCategoryIndex, relaxingSoundIndex)">
               <h5 class="relaxing-sound-title">{{singleRelaxingSound['name']}}</h5>
               @if(addOnSelectedRelaxingSoundId !== 0 && singleRelaxingSound['soundId'] === addOnSelectedRelaxingSoundId)
               {

@@ -36,6 +36,21 @@
   opacity: 0.8;
 }
 
+.delete-relaxing-sound-btn {
+  font-size: 2rem;
+  min-width: 30px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+
+.delete-relaxing-sound-btn:hover {
+  background-color: red;
+}
+
 .play-button-container {
   height: 100%;
   cursor: pointer;
