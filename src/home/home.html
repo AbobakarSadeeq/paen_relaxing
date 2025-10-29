@@ -20,8 +20,9 @@
         }
 
         <div class="sound-volumn-slider-container">
-          <input type="range" min="0" max="100" value="50" class="slider" id="myRange"
-            (input)="changeSoundVolume(index, $event)">
+          <input type="range" min="0" max="100" [value]="singleSound['soundVolume']" class="slider" id="myRange"
+            (input)="changeSoundVolume(index, $event)"
+            (change)="saveSoundVolumeState(singleSound['categoryId'], singleSound['soundId'], $event)">
         </div>
 
       </div>
@@ -65,21 +66,23 @@
             @for(singleRelaxingSound of singleCategory['relaxingSounds']; track singleRelaxingSound['soundId']; let
             relaxingSoundIndex = $index)
             {
-            <div class="relaxing-sound-img-container"
-              [class.add-selected]="addOnSelectedRelaxingSoundId !== 0 && singleRelaxingSound['soundId'] === addOnSelectedRelaxingSoundId"
+            <div class="relaxing-sound-img-container" [class.add-selected]="singleCategory['categoryId'] === applySoundSelectedStyleOnSoundInSelectingSoundModel.categoryId &&
+               singleRelaxingSound['soundId'] === applySoundSelectedStyleOnSoundInSelectingSoundModel.soundId"
               [id]="singleRelaxingSound['isAlreadySelected'] ? 'already-selected' : null"
               (click)="selectingRelaxingSoundOnSelectionModel(singleCategory['categoryId'], singleRelaxingSound['soundId'], relaxingCategoryIndex, relaxingSoundIndex)">
               <h5 class="relaxing-sound-title">{{singleRelaxingSound['isAlreadySelected'] ? 'Already Used' :
                 singleRelaxingSound['name']}}</h5>
-              @if(addOnSelectedRelaxingSoundId !== 0 && singleRelaxingSound['soundId'] === addOnSelectedRelaxingSoundId)
+              @if(singleCategory['categoryId'] === applySoundSelectedStyleOnSoundInSelectingSoundModel.categoryId &&
+              singleRelaxingSound['soundId'] === applySoundSelectedStyleOnSoundInSelectingSoundModel.soundId)
               {
               <i class="bi bi-check-circle-fill selected-relaxing-sound-icon"></i>
               }
-              <img [src]="singleRelaxingSound['soundImageLocation']" [id]="singleRelaxingSound['isAlreadySelected'] ? 'already-selected-img' : null">
+              <img [src]="singleRelaxingSound['soundImageLocation']"
+                [id]="singleRelaxingSound['isAlreadySelected'] ? 'already-selected-img' : null">
             </div>
             }
           </div>
-
+          <hr>
         </div>
         }
 

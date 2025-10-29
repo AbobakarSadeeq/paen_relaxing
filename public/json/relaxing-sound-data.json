@@ -16,5 +16,65 @@
         "soundImageLocation": "/Relaxing-Sounds-images/Rain/thunderstorm-rain.jpg"
       }
     ]
+  },
+  {
+    "categoryId": 2,
+    "categoryName": "Fan",
+    "relaxingSounds": [
+      {
+        "soundId": 1,
+        "name": "RoofTop Fan",
+        "soundAudioLocation": "/Relaxing-Audios/Fan/Roof-Top-Fan.mp3",
+        "soundImageLocation": "/Relaxing-Sounds-images/Fan/roof-top-Fan.jpg"
+      },
+      {
+        "soundId": 2,
+        "name": "Stand Fan",
+        "soundAudioLocation": "/Relaxing-Audios/Fan/Stand-Fan.mp3",
+        "soundImageLocation": "/Relaxing-Sounds-images/Fan/Stand-Fan.jpeg"
+      },
+      {
+        "soundId": 3,
+        "name": "Air Conditioner",
+        "soundAudioLocation": "/Relaxing-Audios/Fan/Air-Conditioner.mp3",
+        "soundImageLocation": "/Relaxing-Sounds-images/Fan/Air-Conditioner.jpg"
+      }
+    ]
+  },
+  {
+    "categoryId": 3,
+    "categoryName": "Night",
+    "relaxingSounds": [
+      {
+        "soundId": 1,
+        "name": "Night Cricket",
+        "soundAudioLocation": "/Relaxing-Audios/Night/Night-Cricket.mp3",
+        "soundImageLocation": "/Relaxing-Sounds-images/Night/Night-Cricket.jpg"
+      }
+    ]
+  },
+  {
+    "categoryId": 4,
+    "categoryName": "Fire",
+    "relaxingSounds": [
+      {
+        "soundId": 1,
+        "name": "Fire Place",
+        "soundAudioLocation": "/Relaxing-Audios/Fire/Fire-Place.mp3",
+        "soundImageLocation": "/Relaxing-Sounds-images/Fire/Fire-Place.jpg"
+      }
+    ]
+  },
+  {
+    "categoryId": 5,
+    "categoryName": "Water",
+    "relaxingSounds": [
+      {
+        "soundId": 1,
+        "name": "Water Fall",
+        "soundAudioLocation": "/Relaxing-Audios/Water/Waterfall.mp3",
+        "soundImageLocation": "/Relaxing-Sounds-images/Water/Waterfall.jpeg"
+      }
+    ]
   }
 ]
