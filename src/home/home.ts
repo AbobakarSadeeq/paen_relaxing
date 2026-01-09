@@ -67,11 +67,19 @@ export class Home {
   playSound(index: number) {
     this.choosedRelaxingSounds[index]['playPauseSoundState'] = true;
     this.choosedRelaxingSounds[index]['eachSoundAudioObj'].play();
+    const isIndexFoundOfAnySoundPlayedRightNow = this.choosedRelaxingSounds.findIndex(a => a['playPauseSoundState'] == true);
+    if (isIndexFoundOfAnySoundPlayedRightNow > -1) {
+      this.playAndPauseAllSoundStateIconBtn = true;
+    }
   }
 
   stopSound(index: number): void {
     this.choosedRelaxingSounds[index]['playPauseSoundState'] = false;
     this.choosedRelaxingSounds[index]['eachSoundAudioObj'].pause();
+    const isIndexFoundOfAnySoundPlayedRightNow = this.choosedRelaxingSounds.findIndex(a => a['playPauseSoundState'] == true);
+    if (isIndexFoundOfAnySoundPlayedRightNow == -1) {
+      this.playAndPauseAllSoundStateIconBtn = false;
+    }
   }
 
   changeSoundVolume(index: number, event: Event) {
@@ -181,6 +189,34 @@ export class Home {
         sound.isAlreadySelected = false;
       }
     }
+  }
+
+  // ********************** Play all or pause relaxing sound **********************
+
+  playAndPauseAllSoundStateIconBtn: boolean = false;
+  playAndPauseAllRelaxingSoundToggle(): void {
+    const isIndexFoundOfAnySoundPlayedRightNow = this.choosedRelaxingSounds.findIndex(a => a['playPauseSoundState'] == true);
+    if (isIndexFoundOfAnySoundPlayedRightNow > -1) {
+      // pause all relaxing sound
+      this.playAndPauseAllSoundStateIconBtn = false;
+      for (var singleRelaxingSoundIndex in this.choosedRelaxingSounds) {
+        if (this.choosedRelaxingSounds[parseInt(singleRelaxingSoundIndex)]['playPauseSoundState'] == true) {
+          this.choosedRelaxingSounds[parseInt(singleRelaxingSoundIndex)]['playPauseSoundState'] = false;
+          this.choosedRelaxingSounds[parseInt(singleRelaxingSoundIndex)]['eachSoundAudioObj'].pause();
+        }
+      }
+    } else {
+      // play all relaxing sound
+      this.playAndPauseAllSoundStateIconBtn = true;
+      for (var singleRelaxingSoundIndex in this.choosedRelaxingSounds) {
+        if (this.choosedRelaxingSounds[parseInt(singleRelaxingSoundIndex)]['playPauseSoundState'] == false) {
+          this.choosedRelaxingSounds[parseInt(singleRelaxingSoundIndex)]['playPauseSoundState'] = true;
+          this.choosedRelaxingSounds[parseInt(singleRelaxingSoundIndex)]['eachSoundAudioObj'].play();
+        }
+      }
+    }
+
+
   }
 
 }

@@ -29,6 +29,24 @@
     </div>
     }
 
+    <div class="single-relaxing-all-play-pause-sound-box">
+      <div class="single-relaxing-all-play-pause-sound-box-content">
+        <div class="relaxing-sound-all-play-pause-container" (click)="playAndPauseAllRelaxingSoundToggle()">
+          @if(playAndPauseAllSoundStateIconBtn) {
+          <div class="play-pause-all-relaxing-sound-btn-container">
+            <p>Pause All</p>
+            <img src="/icons/pause.png" alt="" width="50" height="50">
+          </div>
+          } @else {
+          <div class="play-pause-all-relaxing-sound-btn-container">
+            <p>Play All</p>
+            <img src="/icons/play-button.png" alt="" width="50" height="50">
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+
     <div class="single-relaxing-box-add">
       <div class="single-relaxing-box-add-content">
         <div class="add-relaxing-sound-container" (click)="openAddRelaxingSoundModel()">
@@ -36,6 +54,7 @@
         </div>
       </div>
     </div>
+
 
   </div>
 </div>
@@ -85,7 +104,6 @@
           <hr>
         </div>
         }
-
 
       </div>
 
