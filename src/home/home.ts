@@ -23,7 +23,9 @@ export class Home {
     this._homeService.getAllCategoriesWithRelaxingSounds().subscribe((data: any) => {
       this.categoriesWithItsRelaxingSounds = data;
       this.getChoosedRelaxingAudioFromLocalStorage();
-
+      // if any sound found already on localstorage then show all play and pause btn.
+      if (this.choosedRelaxingSounds.length > 0)
+        this.showPlayAndPauseAllSoundContainer = true;
     });
   }
 
@@ -107,6 +109,8 @@ export class Home {
     const removeMatchingIdIndexFound = savedSoundIdList.findIndex(singleSound => singleSound['categoryId'] == categoryId && singleSound['soundId'] == soundId);
     savedSoundIdList.splice(removeMatchingIdIndexFound, 1);
     localStorage.setItem('RelaxingSounds', JSON.stringify(savedSoundIdList));
+    if (this.choosedRelaxingSounds.length == 0)
+      this.showPlayAndPauseAllSoundContainer = false;
   }
 
   // ********************** Add relaxing model sound section **********************
@@ -155,6 +159,7 @@ export class Home {
       }
 
       this.getChoosedRelaxingAudioFromLocalStorage();
+      this.showPlayAndPauseAllSoundContainer = true;
     }
   }
 
@@ -194,6 +199,7 @@ export class Home {
   // ********************** Play all or pause relaxing sound **********************
 
   playAndPauseAllSoundStateIconBtn: boolean = false;
+  showPlayAndPauseAllSoundContainer: boolean = false;
   playAndPauseAllRelaxingSoundToggle(): void {
     const isIndexFoundOfAnySoundPlayedRightNow = this.choosedRelaxingSounds.findIndex(a => a['playPauseSoundState'] == true);
     if (isIndexFoundOfAnySoundPlayedRightNow > -1) {
