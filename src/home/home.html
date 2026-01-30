@@ -21,7 +21,7 @@
 
         <div class="sound-volumn-slider-container">
           <input type="range" min="0" max="100" [value]="singleSound['soundVolume']" class="slider" id="myRange"
-            (input)="changeSoundVolume(index, $event)"
+            (input)="changeSingleSoundVolume(index, $event)"
             (change)="saveSoundVolumeState(singleSound['categoryId'], singleSound['soundId'], $event)">
         </div>
 
@@ -44,6 +44,12 @@
             <img src="/icons/play-button.png" alt="" width="50" height="50">
           </div>
           }
+        </div>
+
+        <div class="all-sound-volumn-slider-container">
+          <span>All Sounds Volumes</span>
+          <input type="range" min="0" max="100" [value]="choosedRelaxingSounds[0]['soundVolume']" class="slider" id="myRange"
+            (input)="changeAllSoundsVolumes($event)" (change)="saveAllSoundsVolumeState($event)">
         </div>
       </div>
     </div>

@@ -84,10 +84,19 @@ export class Home {
     }
   }
 
-  changeSoundVolume(index: number, event: Event) {
+  changeSingleSoundVolume(index: number, event: Event) {
     const slider = event.target as HTMLInputElement;
     const currentVolume = parseInt(slider.value);
     this.choosedRelaxingSounds[index]['eachSoundAudioObj'].volume = currentVolume / 100;
+  }
+
+  changeAllSoundsVolumes(event: Event) {
+    const slider = event.target as HTMLInputElement;
+    const currentVolume = parseInt(slider.value);
+    this.choosedRelaxingSounds.forEach((singleRelaxingSound: any) => {
+      singleRelaxingSound['eachSoundAudioObj'].volume = currentVolume / 100;
+      singleRelaxingSound['soundVolume'] = currentVolume;
+    })
   }
 
   saveSoundVolumeState(categoryId: number, soundId: number, event: any): void {
@@ -97,6 +106,15 @@ export class Home {
     savedSoundIdList[index]['soundVolume'] = volume;
     localStorage.setItem('RelaxingSounds', JSON.stringify(savedSoundIdList));
 
+  }
+
+  saveAllSoundsVolumeState(event: any) {
+    const volume = parseFloat(event.target.value);
+    const savedSoundIdList = [...JSON.parse(localStorage.getItem('RelaxingSounds')!)];
+    savedSoundIdList.forEach((singleRelaxingSound: any) => {
+      singleRelaxingSound['soundVolume'] = volume;
+    })
+    localStorage.setItem('RelaxingSounds', JSON.stringify(savedSoundIdList));
   }
 
   removeSound(index: number, categoryId: number, soundId: number): void {
