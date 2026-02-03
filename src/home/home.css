@@ -71,14 +71,23 @@
 .sound-volumn-slider-container {
   position: absolute;
   bottom: 1em;
-  left: 2em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sound-volumn-slider-container input {
+  min-width: 12em;
 }
 
 .all-sound-volumn-slider-container {
   position: absolute;
   bottom: 1em;
-  left: 2em;
-  max-width: 12em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.all-sound-volumn-slider-container input {
+  min-width: 12em;
 }
 
 .single-relaxing-box-add {
