@@ -76,5 +76,17 @@
         "soundImageLocation": "/Relaxing-Sounds-images/Water/Waterfall.jpeg"
       }
     ]
+  },
+  {
+    "categoryId": 6,
+    "categoryName": "Nostalgic ",
+    "relaxingSounds": [
+      {
+        "soundId": 1,
+        "name": "PS5 Menu Theme",
+        "soundAudioLocation": "/Relaxing-Audios/Nostalgic/Ps5-Menu-Theme.mp3",
+        "soundImageLocation": "/Relaxing-Sounds-images/Nostalgic/Ps5.jpg"
+      }
+    ]
   }
 ]
